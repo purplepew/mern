@@ -12,14 +12,22 @@ const NoteList = () => {
         isError,
         error } = useGetNotesQuery()
 
-        console.log(notes)
+        let content
+        if(isLoading){
+            content = <Typography>Loading...</Typography>
+        }else if(isSuccess){
+            content = <Typography>connected</Typography>
+        }else if(isError){
+            const errMsg = error.error || error.data.message || 'error'
+            content = <Typography>{errMsg}</Typography>
+        }
 
     return (
         <Container sx={{ p: 2, minHeight: '90vh', backgroundColor: 'background.paper' }}>
             <Stack spacing={2}>
                 <Typography>Notes</Typography>
                 <Divider />
-                <Typography>asd</Typography>
+                {content}
             </Stack>
         </Container>
     )

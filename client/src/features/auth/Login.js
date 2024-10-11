@@ -26,11 +26,14 @@ const Login = () => {
             dispatch(setCredentials({ accessToken }))
             navigate('/dash')
         } catch (error) {
-            console.log(error)
             if (typeof error.status !== 'number' || !error.status) {
                 setErrMsg('No server response')
             } else if (error.status === 404) {
                 setErrMsg('Invalid username or password')
+            }else if(error.data?.message){
+                setErrMsg(error.data.message)
+            }else {
+                setErrMsg(error.error || 'Error.')
             }
         }
     }
