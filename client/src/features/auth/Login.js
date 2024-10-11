@@ -50,7 +50,7 @@ const Login = () => {
             <Stack gap={1.5} direction="column" sx={{
                 margin: '0 auto', minWidth: 325, maxWidth: 460,
             }}>
-                <TextField onChange={onChangeUsername} value={username} label="usesrname" />
+                <TextField onChange={onChangeUsername} value={username} label="username" />
                 <TextField onChange={onChangePassword} value={password} label="password" />
                 <Button sx={{ backgroundColor: isSuccess ? "forestgreen" : "primary" }} onClick={onLoginHandler} disabled={isLoading} variant="contained">Login</Button>
                 <Typography color="warning" sx={{ textAlign: 'center', fontFamily: 'Elephant, Trebuchet MS', }}>{errMsg}</Typography>
