@@ -12,7 +12,7 @@ import { useLoginMutation } from './authApiSlice'
 import { useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import usePersist from '../../app/hooks/usePersist'
+import usePersist from '../../hooks/usePersist'
 
 const Login = () => {
     const dispatch = useDispatch()
