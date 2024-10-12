@@ -10,6 +10,6 @@ const usePersist = () => {
     )
     return [persist, setPersist]
 
-}
+} 
 
 export default usePersist

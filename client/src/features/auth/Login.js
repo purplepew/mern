@@ -63,7 +63,7 @@ const Login = () => {
                 <FormControlLabel control={<Checkbox onClick={handleToggleForPersist} />} label="Remember me" />
                 <Typography color="warning" sx={{ textAlign: 'center', fontFamily: 'Elephant, Trebuchet MS', }}>{errMsg}</Typography>
             </Stack>
-        </Container>
+        </Container> 
     )
 }
 
