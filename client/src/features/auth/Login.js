@@ -4,12 +4,15 @@ import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
+import Checkbox from '@mui/material/Checkbox'
+import FormControlLabel from '@mui/material/FormControlLabel'
 
 import { setCredentials } from './authSlice'
 import { useLoginMutation } from './authApiSlice'
 import { useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import usePersist from '../../app/hooks/usePersist'
 
 const Login = () => {
     const dispatch = useDispatch()
@@ -17,6 +20,8 @@ const Login = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [errMsg, setErrMsg] = useState('')
+
+    const [persist, setPersist] = usePersist()
 
     const [login, { isLoading, isSuccess }] = useLoginMutation()
 
@@ -40,6 +45,8 @@ const Login = () => {
 
     const onChangeUsername = (e) => setUsername(e.target.value)
     const onChangePassword = (e) => setPassword(e.target.value)
+    const handleToggleForPersist = () => setPersist(prev => !prev)
+  
 
     useEffect(() => {
         setErrMsg('')
@@ -53,6 +60,7 @@ const Login = () => {
                 <TextField onChange={onChangeUsername} value={username} label="usesrname" />
                 <TextField onChange={onChangePassword} value={password} label="password" />
                 <Button sx={{ backgroundColor: isSuccess ? "forestgreen" : "primary" }} onClick={onLoginHandler} disabled={isLoading} variant="contained">Login</Button>
+                <FormControlLabel control={<Checkbox onClick={handleToggleForPersist} />} label="Remember me" />
                 <Typography color="warning" sx={{ textAlign: 'center', fontFamily: 'Elephant, Trebuchet MS', }}>{errMsg}</Typography>
             </Stack>
         </Container>
